@@ -1,0 +1,6 @@
+{
+  "name": "PhonePe Shop Marketplace",
+  "description": "Mobile-first prototype of PhonePe Shop marketplace featuring Electronics and Beauty & Personal Care with UPI checkout, No-Cost EMI, UPI Autopay subscriptions, product comparison, and an AI Shopping Assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
