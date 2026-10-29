@@ -10,6 +10,32 @@ PhonePe Shop is a proposed in-app marketplace for Electronics and Beauty & Perso
 
 **Hypothesis:** Trusted payments, competitive offers, and verified sellers can differentiate PhonePe in e-commerce.
 
+## Prompt Engineering
+
+Query filtering and category planning use a four-step prompt chain (full prompts in [`docs/PROMPTS.md`](./docs/PROMPTS.md)).
+
+| Step | Prompt | Technique | Output |
+|---|---|---|---|
+| 1 | Intent classifier | Role + 9-intent taxonomy, few-shot, reason-first, JSON | Intent + confidence per query |
+| 2 | Reviewer | Self-criticism | Corrected labels + error patterns |
+| 3 | Goods-fit | Decomposition + tree-of-thought | Sellable? Category + subcategory |
+| 4 | Category plan | Skeleton-of-thought | Scored P0/P1/P2 category plan |
+
+**Design choices**
+- Reasoning is produced before the label, which reduces keyword-only errors.
+- Queries run in batches of 25 with a strict JSON schema.
+- Error patterns from step 2 feed back into the step 1 rules, then the batch is re-run.
+
+**Evaluation:** 50 random queries labelled manually, then compared across versions.
+
+| Version | Method | Agreement with manual labels |
+|---|---|---|
+| v0 | Keyword rules (Excel baseline) | _TBD_ |
+| v1 | Few-shot classifier | _TBD_ |
+| v2 | Classifier + self-critique | _TBD_ |
+
+> **Note:** the goods-intent count (114 of 798) in the Excel model comes from keyword rules. LLM labels vary between runs and are validated against the manual sample above.
+
 ## 2. Problem & Opportunity
 Google Trends India analysis identified 114 goods-related queries among 798 unique queries (14%).
 
