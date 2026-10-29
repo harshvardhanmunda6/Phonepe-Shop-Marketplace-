@@ -12,7 +12,7 @@ PhonePe Shop is a proposed in-app marketplace for Electronics and Beauty & Perso
 
 ## Prompt Engineering
 
-Query filtering and category planning use a four-step prompt chain (full prompts in [`docs/PROMPTS.md`](./docs/PROMPTS.md)).
+Query filtering and category planning use a four-step prompt chain
 
 | Step | Prompt | Technique | Output |
 |---|---|---|---|
